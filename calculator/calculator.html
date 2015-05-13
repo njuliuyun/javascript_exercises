@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Calculator</title>
+  <link rel="stylesheet" type="text/css" href="calculator.css">
+  <script>
+    window.onload = function() {
+	  var operators = document.getElementsByClassName("operator");
+	  var numbers = document.getElementsByClassName("number");
+	  var displayWindow = document.getElementById("displaywindow");
+	  var formulaWindow = document.getElementById("formula");
+	  var formula = "";
+	  var output = "";
+	  
+	  function reset() {
+	    output = "";
+		formula = "";
+	  }
+	  
+	  function constructFormula(input) {
+	    if (input === "c") {		  
+		  reset();
+		  formulaWindow.value = "";
+		  displayWindow.value = "0";
+		}
+		else if (input === "." && output.indexOf(".") === -1) {
+		  output += input;
+		  formula += input;
+		  formulaWindow.value = formula;
+		  displayWindow.value = output;
+		}
+		else if (input === "=") {
+		  try {output = eval(formula);formula = output.toString();
+		       } catch(err) { output = "ERROR"; formula = "";}		  
+		  displayWindow.value = output;
+		  formulaWindow.value = formula;		  
+		  output = "";
+		}
+		else if (isNumber(input)) {		  
+		  output += input; 
+		  formula += input; 
+		  formulaWindow.value = formula;
+		  displayWindow.value = output;
+		}
+		else {
+		  //console.log(formula);
+		  if (formula === "") formula = "0";
+		  if (!isOperator(formula.slice(-1))) {
+			output = input;
+			formula += input;			
+		  }
+		  else {
+		    output = input;
+			formula = formula.slice(0, formula.length-1);			
+            formula += input;			
+		  }
+		  formulaWindow.value = formula;
+		  displayWindow.value = output;
+		  output = "";
+		}
+		/*switch (input) {
+		  case "c": reset(); break;
+		  case ".": if (output.indexOf(".") === -1) {
+		             output += input;
+		             formula += input;
+		             }
+					 break;
+		  case "=": output = eval(formula); break;
+		}*/
+		
+	  }
+	  
+	  
+	  function isNumber(x) {
+	    return x != "" && "0123456789".indexOf(x) >= 0;
+	  }
+	  
+	  function isOperator(x) {
+	    return x != "" && "+-*/".indexOf(x) >= 0;
+	  }
+	  
+	  function showFormula() {	    
+		formulaWindow.value = formula;
+	  }
+	  function showResult() {
+	    
+	    displayWindow.value = output; 
+	  }
+	  
+	  for (var i = 0; i < operators.length; i++) {
+	    operators[i].onmouseover = function() {
+	      this.className = "currentoperator";
+	    }
+	    operators[i].onmouseout = function() {
+	      this.className = "operator";
+	    }
+		operators[i].onclick = function() {
+		  var inputValue = this.getElementsByTagName("a")[0].innerHTML;
+	      constructFormula(inputValue);
+	    }
+	  }
+	  for (var i = 0; i < numbers.length; i++) {
+	    numbers[i].onmouseover = function() {
+	      this.className = "currentnumber";
+	    }
+	    numbers[i].onmouseout = function() {
+	      this.className = "number";
+	    }
+		numbers[i].onclick = function() {
+		  var inputValue = this.getElementsByTagName("a")[0].innerHTML;
+	      constructFormula(inputValue);
+	    }
+	  }
+	  
+	}
+  </script>
+</head>
+<body>
+  <div id="calculator">
+    
+    <input type="text" readonly="readonly" id="displaywindow" maxlength="9" value="0">
+	<input type="text" readonly="readonly" id="formula" value = "">
+	<ul>
+	  <li class="operator"><a href="#">c</a></li>
+	  <li class="operator"><a href="#">/</a></li>
+	  <li class="operator"><a href="#">%</a></li>
+	  <li class="operator"><a href="#">*</a></li>
+	  <li class="number"><a href="#">7</a></li>
+	  <li class="number"><a href="#">8</a></li>
+	  <li class="number"><a href="#">9</a></li>
+	  <li class="operator"><a href="#">-</a></li>
+	  <li class="number"><a href="#">4</a></li>
+	  <li class="number"><a href="#">5</a></li>
+	  <li class="number"><a href="#">6</a></li>
+	  <li class="operator"><a href="#">+</a></li>
+	  <li class="number"><a href="#">1</a></li>
+	  <li class="number"><a href="#">2</a></li>
+	  <li class="number"><a href="#">3</a></li>
+	  <li class="operator" id="enter"><a href="#">=</a></li>
+	  <li class="number" id="bottom1"><a href="#">0</a></li>
+	  <li class="number" id="bottom2"><a href="#">.</a></li>
+    </ul>	  
+  </div>
+</body>
+</html>
