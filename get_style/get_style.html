@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Get Style</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script>
+      window.onload = function() {
+	      var styles = document.getElementsByTagName("span");
+		  var Odiv = document.getElementsByTagName("div")[0];
+		  //console.log(Odiv.style);
+		  //console.log(typeof(Odiv.style.width));
+		  styles[0].onclick = function() {
+		      alert("width: " + Odiv.style.width +
+			        "\nheight: " + Odiv.style.height +
+					"\nbackground-color: "+Odiv.style.background);
+		  }
+		  styles[1].onclick = function() {
+		      /*Odiv.style.width = "330";
+			  Odiv.style.height = "100";
+			  Odiv.style.background = "rgb(239,248,255)";
+			  Odiv.style.border = "1px solid blue";*/
+			  setStyle(Odiv, {width: "330px", height: "100px", background: "rgb(239,248,255)", "border-color":"blue"})
+			  for (var i = 0; i < styles.length; i++) {
+			      setStyle(styles[i],"background","blue");
+			  }
+		  }
+		  
+		  styles[2].onclick = function()  {
+		      /*Odiv.style.width = "400px";
+			  Odiv.style.height = "200px";
+			  Odiv.style.background = "rgb(254,244,235)";
+			  Odiv.style.border = "1px solid orange";*/
+			  setStyle(Odiv, {width: "400px", height: "200px", background: "rgb(254,244,235)", "border-color":"orange"});
+			  for (var i = 0; i < styles.length; i++) {
+			      setStyle(styles[i],"background","orange");
+			  }
+		  }
+		  
+		  function setStyle(obj, attr, value) {
+		    switch(arguments.length) {
+			    case 2: 
+                // if the second argument is an object:
+                if (typeof(arguments[1]) == "object")	{
+				    for (var i in attr) {
+			            obj.style[i] = attr[i];
+			        }
+				} break;
+                case 3:
+                    obj.style[attr] = value; break;
+			    default: alert("wrong arguments!");    				
+			}
+		      
+		  }
+	  }
+  </script>
+</head>
+<body>
+  <div style="width: 400px;height: 200px; background: rgb(254,244,235);">
+    <span>Get Style</span>
+	<span>Set Style</span>
+	<span>Default Style</span>
+  </div>
+</body>
+</html>
