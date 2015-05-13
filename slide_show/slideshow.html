@@ -1,0 +1,102 @@
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Slide Show</title>
+  <link rel="stylesheet" type="text/css" href="slide.css">
+  <script>
+    window.onload = function() {
+	    var pictures = document.getElementById("picture").getElementsByTagName("li");
+	    var numbers = document.getElementById("number").getElementsByTagName("li");
+	    var n = 0;
+	    var showInterval;
+		var fading;
+		autoPlay();
+		// show an image and the index
+		function show(index) {
+		    for (i = 0; i < pictures.length; i++) {
+		        pictures[i].style.display="none";
+		        numbers[i].className="";
+		    }
+			pictures[index].style.display="block";
+			pictures[index].style.opacity= "0";
+		    numbers[index].className="currentnumber";
+			n = index;
+			var alpha = 0;
+			// fading effet
+			fading = setInterval(function () {
+					if (alpha < 100) {
+                        alpha += 2;						
+						pictures[index].style.opacity = alpha / 100;
+						pictures[index].style.filter = "alpha(opacity = " + alpha + ")";						
+						
+					} else {
+						clearInterval(fading);
+				    }			
+			    },20);
+			/*setTimeout(function() {
+				timer = setInterval(function () {
+					if (alpha > 0) {
+                        alpha -= 2;						
+						pictures[index].style.opacity = alpha / 100;
+						pictures[index].style.filter = "alpha(opacity = " + alpha + ")";						
+						
+					} else {
+						clearInterval(timer);
+				    }			
+			    },20);
+			}, 2000);*/
+			
+			
+		}
+		
+		// slide show 
+		function autoPlay() {		    
+		    showInterval = setInterval(function(){n = (n+1)%pictures.length; show(n)}, 3000);
+		}
+		
+		//set mouse-over and mouse-out effects for images
+	    for (i = 0; i < pictures.length; i++) {
+	     // the slide show stops when mouse moved over the image
+		  pictures[i].onmouseover = function() {
+		    clearInterval(showInterval);
+			//clearInterval(fading);
+			//this.style.opacity = "1";
+		  }
+		  // the slide show resumes when mouse moved away from the image
+		  pictures[i].onmouseout = function() {
+		    autoPlay();
+		  }
+		}
+		
+		//set mouse-over and mouse-out effects for numbers
+		for (i = 0; i < numbers.length; i++) {
+		    numbers[i].index = i;
+		    numbers[i].onmouseover = function() {
+			    clearInterval(showInterval);
+				clearInterval(fading);
+			    show(this.index);
+			}
+			numbers[i].onmouseout = function() {
+			    autoPlay();
+			}
+		}
+	}
+  </script>
+</head>
+<body>
+  <div>
+    <ul id="picture">
+      <li style="display:block;"><img src="image/01.jpg"></li>
+	  <li style="display:none;"><img src="image/02.jpg"></li>
+	  <li style="display:none;"><img src="image/03.jpg"></li>
+	  <li style="display:none;"><img src="image/04.jpg"></li>
+	  <li style="display:none;"><img src="image/05.jpg"></li>
+	</ul>
+    <ul id="number">
+	  <li class="currentnumber">1</li>
+	  <li>2</li>
+	  <li>3</li>
+	  <li>4</li>
+	  <li>5</li>
+    </ul>  	
+  </div> 
