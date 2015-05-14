@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Rating</title>
+  <link rel="stylesheet" type="text/css" href="rating.css">
+  <script>
+    window.onload = function() {
+	  var stars = document.getElementsByTagName("img");
+	  var ratings = ["very bad", "bad", "fine", "good", "very good"];
+	  var ratingPosition = ["680px", "710px","750px","780px","800px"];
+	  var showRating = document.getElementById("rating");
+	  var showFinalRating = document.getElementById("final");
+	  var finalRating = 0;
+	  // set initial rating to be no stars 
+	  function setInitial() {
+	    for (var i = 0; i < stars.length; i++) {
+		    stars[i].src = "02.png";
+		  }
+	  }
+	  // set event listeners
+	  for (var i = 0; i < stars.length; i++) {
+	    stars[i].index = i;
+        // when move mouse over stars, show the stars and the description of the rating		
+	    stars[i].onmouseover = function() {
+		  setInitial();
+		  for (var j = 0; j <= this.index; j++) {
+		    stars[j].src = "03.png";
+		  }		  
+		  showRating.style.display = "block";
+		  showRating.innerHTML = ratings[this.index];
+		  showRating.style.left = ratingPosition[this.index];
+		}
+		// when move mouse away from stars, the rating gets back to what it has been set to
+		stars[i].onmouseout = function() {		  
+		  setInitial();
+		  for (var j = 0; j < finalRating; j++) {
+		    stars[j].src = "03.png";
+		  }		  
+		  showRating.removeAttribute("style");
+		}
+		// click stars to set a rating
+		stars[i].onclick = function() {
+		  finalRating = this.index +1;
+		  for (var j = 0; j < finalRating; j++) {
+		    stars[j].src = "03.png";
+		  }
+          showFinalRating.getElementsByTagName("b")[0].innerHTML = finalRating==1? (finalRating + " star") : (finalRating + " stars");
+		  showFinalRating.getElementsByTagName("span")[0].innerHTML = "(" + ratings[this.index] +")";
+		}
+	  }
+	}
+  
+  </script>
+</head>
+<body>
+  <div>
+  <span>Click the stars to choose a rating: </span>
+  <span id="final"><b></b><span></span></span>
+  <ul>
+    <li>
+	  <img src="02.png" style="width:30px;">
+	</li>  
+    <li>
+	  <img src="02.png" style="width:30px;">
+    </li>  
+	<li>
+	  <img src="02.png" style="width:30px;">
+	</li>  
+    <li>
+	  <img src="02.png" style="width:30px;">
+	</li>
+    <li>
+	  <img src="02.png" style="width:30px;">
+	</li>
+  </ul>
+  <p id="rating"></p>
+  </div>
+</body>
+</html>  
