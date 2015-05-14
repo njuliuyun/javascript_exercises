@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Search Bar</title>
+  <link rel="stylesheet" type="text/css" href="search.css">
+  <script>
+    window.onload = function() {
+	  var inputs = document.getElementsByTagName("input");
+	  var selectedOption = inputs[0];
+	  var showOptions = document.getElementsByTagName("ul")[0];
+	  var options = document.getElementsByTagName("li");
+	 
+	  // when selectedOption is clicked, the dropdown list will be displayed
+	  selectedOption.addEventListener("click", function() {
+	    showOptions.style.display = showOptions.style.display == "none"? "block" : "none";
+		// cancel event bubbling so that the onclick handler for document stops working
+		var e = window.event;
+		e.stopPropagation();
+	  }, false);
+	  
+	  // click on the option list, the selected item will appear in the input area 	  
+	  for (var i = 0; i < options.length; i++) {	    
+	    options[i].addEventListener("click",function() {
+		  selectedOption.value = this.innerHTML;
+		}, false);
+	  }
+	  // click other area in the window will turn the dropdown list off 
+	  document.addEventListener("click", function() {showOptions.style.display = "none";}, false);
+	}
+  </script>
+</head>
+<body>
+  <div>
+    <img src="01.png" style="width:20px;">
+    <input type="text" readonly="readonly" id="selected" value="Please select an option">
+    <input type="button" id="search" value="Search">
+  </div>
+  <ul style="display: none">
+	  <li>Option 1</li>
+	  <li>Option 2</li>
+	  <li>Option 3</li>
+	  <li>Option 4</li>
+	  <li>Option 5</li>
+	  <li>Option 6</li>
+  </ul>
+</body>
+</html>  
