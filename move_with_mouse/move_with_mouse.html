@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Coordinate</title>
+  <link rel="stylesheet" type="text/css" href="move.css">
+  <script>
+    window.onload = function() {
+	  var imgList = document.getElementsByTagName("li");
+	  var largeDiv = document.getElementById("large");
+	  var largeImg = largeDiv.getElementsByTagName("img")[0];
+	  for (var i = 0; i < imgList.length; i++) {
+	    imgList[i].onmouseover = function() {
+		  largeDiv.style.display = "block";
+		  largeImg.src = this.getElementsByTagName("img")[0].src;
+		}
+		// large image moves with mouse
+		imgList[i].onmousemove = function(event) {
+	    var event = event || window.event;
+		var x = event.clientX;
+		var spaceLeftX = document.documentElement.offsetWidth - x;
+		var divWidth = largeDiv.offsetWidth;
+		largeDiv.style.top = event.clientY+ 20 + "px";
+		//if there is not enough space on the right of the mouse, image will show on the left of the mouse		
+		largeDiv.style.left = spaceLeftX > divWidth + 10? x + 10+ "px" : x- divWidth + "px";
+	    }
+		// move mouse out of a image, large image will disappear
+		imgList[i].onmouseout = function(event) {
+		  largeImg.src = "";
+		  largeDiv.style.display = "none";
+		}
+	  }
+	  
+	  
+	}
+  </script>
+</head>
+<body>
+  <ul>
+    <li><img src="image/01.jpg"></li>
+	<li><img src="image/02.jpg"></li>
+	<li><img src="image/03.jpg"></li>
+	<li><img src="image/04.jpg"></li>
+  </ul>
+  <div id="large" style="display:none"> <img src="" > </div>
+</body>
+</html>
