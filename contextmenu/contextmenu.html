@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Context Menu</title>
+  <style>
+  h3 {width: 500px;	margin: 0 auto;}
+  ul {display: none; position: absolute; list-style: none; width: 80px; border: 1px solid black; padding: 0; cursor: default;}
+  li:hover {background: #f0f0f0; outline: 1px solid blue;}
+  img {width: 30px; vertical-align: middle; margin: 0 5px;}
+  </style>
+  <script>  
+  window.onload = function() {
+    var cm = document.getElementsByTagName("ul")[0];
+	//right-click displays the context menu
+    document.oncontextmenu = function(event) {
+      var event = event || window.event;
+	  cm.style.display = "block";
+	  cm.style.top = event.clientY + "px";
+	  cm.style.left = event.clientX + "px";
+	  return false;
+    }
+	//left-click closes the context menu 
+	document.onclick = function() {
+	  cm.style.display = "none";
+	}
+  }
+  </script>
+</head>
+<body>
+  <h3>Right click to see the custom context menu.</h3>
+  <ul>
+    <li><img src="image/cut.png">cut</li>
+	<li><img src="image/copy.png">copy</li>
+	<li><img src="image/paste.png">paste</li>
+  </ul>
+</body>
+</html>
