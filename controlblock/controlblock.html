@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8">
+  <title>Control Block</title>
+  <link rel="stylesheet" href="control.css">
+  <script>
+    window.onload = function() {
+	  var square = document.getElementById("square");
+	  var top = 100;
+	  var left = 300;
+	  var windowWidth = document.documentElement.offsetWidth;
+	  var windowHeight = window.innerHeight || clinetHeight; // For IE8 and earlier, you can use the clientWidth and clientHeight properties
+	  var squareW = square.offsetWidth;
+	  var squareH = square.offsetHeight;
+	  function changeStyle(obj, attr, value) {
+	    if (arguments.length == 2) {		  
+		  for (var i in attr) {		    
+		    obj.style[i] = attr[i];
+		  }
+		}
+		else if (arguments.length == 3) {
+		  obj.style[attr] = value;
+		}	    
+	  }
+	  document.onkeydown = function(event) {
+	    var keycode = event.which || event.keyCode;
+		var ctrlDown = event.ctrlKey;
+		switch(keycode) {
+		
+		  case 38: {
+		    // ctrl+ up-arrow: expand
+		    if (ctrlDown) {
+			    squareW *= 1.5;
+				squareH *= 1.5;
+				top -= squareW/6;
+				left -= squareH/6;					
+				changeStyle(square, {width: squareW+"px", height:squareH+"px", top: top + "px", left: left + "px"});
+			}
+			// up-arrow, move upwards
+		    else if (top > 0) {
+			  top -= 10;	  
+			  changeStyle(square, "top", top+"px"); 			  
+			}            			
+			break;  
+		  }
+		  case 40: {
+		    if (ctrlDown) {
+			    squareW *= 0.75;
+				squareH *= 0.75;
+				top += squareW/6;
+				left += squareH/6;				
+				changeStyle(square, {width: squareW+"px", height:squareH+"px", top: top + "px", left: left + "px"});
+			}
+		    else if (top < windowHeight-squareH) {
+			  top += 10; 
+			  changeStyle(square, "top", top+"px"); 			  
+			}  
+			break;  
+		 }
+		  case 37: {
+		    if (left > 0) {
+			  left -= 10; 
+			  changeStyle(square, "left", left+"px"); 			  
+			}  
+			break;  		
+		  }
+		  case 39: {
+		    if (left < windowWidth- squareW) {
+			  left += 10; 
+			  changeStyle(square, "left", left+"px"); 			  
+			}  
+			break;  		
+		  }
+          case 49: ctrlDown && changeStyle(square, "background", "green");  break;
+          case 50: ctrlDown && changeStyle(square, "background", "yellow");  break;
+          case 51: ctrlDown && changeStyle(square, "background", "blue");  break;			  
+	   }
+	   return false;
+	 }
+	}
+  </script>
+</head>
+<body>
+  <div id="text">
+    <p>use keyboard to control the red block:</p>
+	<p>up: &#8593 down: &#8595 left: &#8594 right: &#8592</p>
+	<p>Ctrl + 1: green</p>
+	<p>Ctrl + 2: yellow</p>
+	<p>Ctrl + 3: blue</p>
+	<p>Ctrl + &#8593: expand</p>
+	<p>Ctrl + &#8595: shrink</p>
+  </div>
+  <div id="square"></div>
+</body>
+</html>
