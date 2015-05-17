@@ -10,15 +10,15 @@ window.onload = function() {
     var drag = false;
     var deltaX = 0; // the distance between the mouse and the top-left corner of the box
     var deltaY = 0;
-    var positions = [[box.offsetLeft, box.offsetTop]];
+    var positions = [];
     var texts = document.getElementsByTagName("p");
     // the drag function is invoked on mouse down event
     header.onmousedown = function(event) {        
         event = event || window.event;
         drag = true;      
         deltaX = event.clientX - box.offsetLeft;
-        deltaY = event.clientY - box.offsetTop;
-        positions = [[box.offsetLeft, box.offsetTop]];
+        deltaY = event.clientY - box.offsetTop; 
+        positions.push([box.offsetLeft, box.offsetTop]);        
         /*set the mouse-move and mouse-up event handler to document. Sometimes the mouse may move fast and the event may 
       happen outside of the box, if the event handler is set to the box, it will not catch the event.*/
         if (document.addEventListener) { // for standard model
@@ -47,12 +47,14 @@ window.onload = function() {
         interv = setInterval(function() {
             if (positions.length > 0) {
                 position = positions.pop();
-               // console.log(position);               
+                //console.log(position); 
+                //console.log(positions);                
                 box.style.left = position[0] + "px";
                 box.style.top = position[1] + "px";
                 updateText();
             } else clearInterval(interv);
-        }, 30);      
+        }, 30); 
+               
     }
     
     replay.onmousedown = function(event) {
