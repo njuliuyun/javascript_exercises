@@ -1,0 +1,39 @@
+body {
+    background: black;
+	font-family: arial;
+    overflow:hidden;
+}
+
+#box {
+    position: absolute;
+	top: 200px;
+	left: 500px;
+}
+
+#header, #content {
+    width: 300px;
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 4px;
+}
+
+#header {
+    background: #1E1E1E;
+	border-bottom:none;
+	text-align: right;
+	cursor: move;
+}
+#header span {
+  cursor: pointer;
+}
+#content {
+    height: 100px;
+	background: #3D3D3D;
+}
+#content p {
+    margin: 10px;
+}
+
+#content span {
+    color: yellow;
+}
