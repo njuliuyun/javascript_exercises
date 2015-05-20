@@ -1,0 +1,108 @@
+body {
+    background: black;
+    font-family: arial;
+}
+#frame {
+    position: relative;
+    width: 460px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+h3 {
+   margin: 0;
+}
+ul {
+    position: absolute;
+    top: 35px;
+    left: 170px;
+    list-style: none;
+}
+li {
+    float: left;
+}
+li img {
+    width: 30px;
+    margin: 2px;
+    opacity: 0.5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+li img:hover {
+    opacity: 1;
+    border: 1px solid red;
+}
+
+li .current {
+    opacity: 1;
+    border: 1px solid red;
+}
+
+input, textarea {
+    margin-top: 10px;
+    border-radius: 5px;
+}
+#nameinput {
+    width: 180px;
+    height: 25px;
+}
+#messageinput {
+    width: 460px;
+    height: 60px;    
+    
+}
+#post {
+    text-align: right;
+    background: linear-gradient(#fff, #f0f0f0);
+}
+#post span {
+    font-size: 20px;
+    font-family: Georgia;    
+    color: red;    
+}
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background: linear-gradient(#B8DB4D,#ADD633,#669900);
+    border: 1px solid #fff;
+    outline: 1px solid #ADD633;
+    cursor: pointer;
+}
+button:hover {
+    background: linear-gradient(#669900,#ADD633);
+}
+
+#showmessage .wholepost{
+    border-bottom: 1px dashed #669999;
+    padding-top: 10px;
+}
+#showmessage  img{
+    float: left;
+    margin-right: 10px;
+}
+#showmessage .wholepost div {
+    display: inline-block;
+    width: 400px;
+    word-wrap: break-word;
+}
+#showmessage .name {
+    color: #00476B;
+}
+
+#showmessage .date {
+    color: #54B5D6;
+    font-size: 12px;
+}
+#showmessage .date .remove{
+    color: #54B5D6;
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#showmessage .wholepost:hover {
+    background: #f0f0f0;
+}

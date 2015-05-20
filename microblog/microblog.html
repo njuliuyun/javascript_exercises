@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8">
+    <title>Microblog</title>
+    <link rel="stylesheet" type="text/css" href="microblog.css">
+    <script src="microblog.js"></script>
+</head>
+<body>
+    <div id="frame">
+        <h3>Say something...</h3>
+        <input id="nameinput" type="text">
+        <ul>
+            <li><img src="image/face1.gif" class="current"></li>
+            <li><img src="image/face2.gif"></li>
+            <li><img src="image/face3.gif"></li>
+            <li><img src="image/face4.gif"></li>
+            <li><img src="image/face5.gif"></li>
+            <li><img src="image/face6.gif"></li>
+            <li><img src="image/face7.gif"></li>
+            <li><img src="image/face8.gif"></li>
+        </ul>
+        <textarea id="messageinput"></textarea>
+        <p id="post">You have <span>200</span> letters <span>left</span>
+            <button>Post</button>
+        </p>
+        <p style="background: #CDDDDD; line-height: 40px; margin:0;">People are saying...</p>
+        <div id="showmessage">
+            <div class="wholepost">
+                <img src="image/face.gif">
+                <div>
+                    <span class="name">Alice: </span>
+                    <span class="message">You can use Ctrl+Enter to post a new message.</span>                
+                    <p class="date">05/19 17:50 <span style="display:none" class="remove">remove</span></p>
+                </div>         
+            </div>
+            <div class="wholepost">
+                <img src="image/face.gif">
+                <div>
+                    <span class="name">Alice: </span>
+                    <span class="message">Click "remove" to delete a message.</span>                
+                    <p class="date">05/19 15:30 <span style="display:none" class="remove">remove</span></p>
+                </div>         
+            </div>
+            <div class="wholepost">
+                <img src="image/face.gif">
+                <div>
+                    <span class="name">Alice: </span><span class="message">Choose a picture above as your avatar.</span>
+                    <p class="date">05/18 14:00 <span style="display:none" class="remove">remove</span></p>
+                </div>
+            </div>
+            <div class="wholepost">
+                <img src="image/face.gif">
+                <div>
+                    <span class="name">Alice: </span><span class="message">This page is an imitation of Tencent micro-blog.</span>
+                    <p class="date">05/17 21:30 <span style="display:none" class="remove">remove</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
