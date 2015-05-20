@@ -29,7 +29,6 @@ window.onload = function() {
             box.setCapture();
             box.attachEvent("onmousemove", moveHandler);
             box.attachEvent("onmouseup", upHanlder);
-            box.releaseCapture();
         }        
         
         // stop the propagation
@@ -107,7 +106,8 @@ window.onload = function() {
         }
         else if (box.detachEvent) {
             box.detachEvent("onmousemove", moveHandler);
-            box.detachEvent("onmouseup", upeHandler);
+            box.detachEvent("onmouseup", upeHandler);            
+            box.releaseCapture();
         }
         drag = false;
         updateText();
