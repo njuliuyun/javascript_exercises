@@ -1,0 +1,48 @@
+
+ul {   
+    position: absolute;
+    width: 200px; 
+    list-style: none;
+    background: #f0f0f0;
+    border: 1px solid #808080;
+    padding: 2px;
+    margin: 0;
+    box-shadow: 3px 3px 3px 0px #929292;
+}
+
+ul span {
+    float: right;
+    font-size: 10px;
+    margin-right: 3px;
+}
+
+li {
+    position: relative;
+    border: 1px solid #f0f0f0;
+    border-left: 1px solid #fff;
+    padding-left: 10px;
+    margin-left: 25px;
+    line-height: 30px;
+    -webkit-box-shadow: -1px 0px 0px 0px #CCCCCC;
+    -moz-box-shadow: -1px 0px 0px 0px #CCCCCC;
+    box-shadow: -1px 0px 0px 0px #CCCCCC;
+    cursor: pointer;
+}
+li:hover {
+    background: #F4F4F4;
+    border: 1px solid #75D1FF;
+    border-radius: 5px;
+    margin:0;
+    padding-left: 35px;
+}
+
+/*when layer1 overlaps with layer3, the text of layer1 shows through layer3
+  so I add the z-index property to solve this problem.
+*/
+.sub1 {
+    z-index: 3;  
+}
+
+.sub2 {
+    z-index: 4;
+}
