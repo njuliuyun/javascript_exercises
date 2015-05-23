@@ -1,0 +1,59 @@
+body{
+    background: black;
+}
+#box {
+    width: 500px;
+    height:170px;
+    margin:0 auto;
+    background: #fff;
+    text-align:center;
+    padding: 8px 5px;
+    border-radius: 5px;
+    overflow:hidden
+}
+#picture {
+    position: relative;
+    padding: 0;
+    margin:0;
+    overflow: hidden;
+}
+#imagebox {
+    position: absolute;
+    width: 490px;
+    height: 170px;
+    overflow: hidden;
+    padding:0;
+    margin-left: 4px;
+}
+#picture li {
+    height: 170px;
+}
+#number{
+    display: block;
+    position: absolute;
+    top: 140px;
+    left: 750px;
+    list-style: none;
+    z-index: 2;
+}
+
+#number li {
+  
+    display: block;
+    width: 20px;
+    height: 18px;
+    margin: 2px;
+    float: left;
+    color: #fff;
+    font-family: arial;
+    background: orange;
+    border-radius: 10px;
+    padding-top: 2px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#number .currentnumber {
+    background:#FF6600;
+    opacity: 1;
+}
